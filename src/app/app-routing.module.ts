@@ -6,6 +6,7 @@ import { ComponentsModule } from './shared/components/components.module';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'offsite', loadChildren: './pages/offsite/offsite-routing.module#OffsiteRoutingModule', data: { title: 'Offsite' } },
 ];
 
 @NgModule({
