@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-styleguide',
@@ -7,7 +7,10 @@ import { LoadingController } from '@ionic/angular';
 })
 export class StyleguidePage {
 
-  constructor(public loadingController: LoadingController) {}
+  constructor(
+    public loadingController: LoadingController,
+    public alertController: AlertController
+  ) { }
 
   async presentLoading() {
     const loading = await this.loadingController.create({
@@ -19,5 +22,33 @@ export class StyleguidePage {
     const { role, data } = await loading.onDidDismiss();
 
     console.log('Loading dismissed!');
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  unread(item) {
+    console.log(item)
   }
 }

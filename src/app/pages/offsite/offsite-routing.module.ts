@@ -9,6 +9,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'styleguide', pathMatch: 'full' },
   {
     path: 'styleguide',
     component: StyleguidePage,
@@ -27,14 +28,14 @@ const routerOptions: ExtraOptions = {
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload', scrollPositionRestoration: 'enabled' }),
+    RouterModule.forChild(routes)
   ],
   exports: [RouterModule],
   declarations: [
-    StyleguidePage,
+    StyleguidePage
   ],
   providers: [
-    StyleguidePage,
+    StyleguidePage
   ],
 })
 export class OffsiteRoutingModule { }

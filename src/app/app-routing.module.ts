@@ -11,7 +11,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    // tslint:disable-next-line: max-line-length
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules , onSameUrlNavigation: 'reload', scrollPositionRestoration: 'enabled'}),
     ComponentsModule,
   ],
   exports: [RouterModule]
